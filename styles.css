@@ -1,0 +1,54 @@
+  body {
+    background: black;
+    font-family:  serif;
+    overflow-x: scroll;
+  }
+
+  h1 {
+    color: white;
+    font-size: 55;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .pn-ProductNav {
+      /* Make this scrollable when needed */
+      overflow-x: auto;
+      /* We don't want vertical scrolling */
+      overflow-y: hidden;
+      /* Make an auto-hiding scroller for the 3 people using a IE */
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+      /* For WebKit implementations, provide inertia scrolling */
+      -webkit-overflow-scrolling: touch;
+      /* We don't want internal inline elements to wrap */
+      white-space: nowrap;
+      /* Remove the default scrollbar for WebKit implementations */
+      &::-webkit-scrollbar {
+          display: none;
+      }
+  }
+  h2{
+    color: white;
+    text-align: center;
+    font-size: 33;
+    text-transform: uppercase;
+  }
+
+  a {
+  color: white;
+  }
+
+  a:visited {
+  color: grey;
+  }
+
+  p {
+    color: white;
+    font-size: 22;
+    text-align: right;
+  }
+
+  ul{
+    color:white;
+    text-align: center;
+    font-size:33;
+  }

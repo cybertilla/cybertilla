@@ -5,14 +5,13 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
 <title> Speculative Non-Fiction </title>
 
-
 </head>
-
 
 <body>
 <h1>
   <div>Writings on Humans and Tech</div>
 </h1>
+
 
 <h2>
   <a href="https://bertillafabris.wordpress.com/2019/06/03/decentralized-research/">Decentralizing Research (2019)</a>

@@ -1,9 +1,11 @@
 # coding: utf-8
-# Author: Bertilla Fabris
+# You are looking at the boringly infinite waves
+# when something touches your left foot
+# a webpage in a bottle, what is this?!
+# Author: Bertilla Fabris, started in the 21st century
 
 from bottle import get, route, abort, run, template, request, redirect, static_file
 import os
-
 
 
 @route("/")

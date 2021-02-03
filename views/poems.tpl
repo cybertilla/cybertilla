@@ -6,19 +6,18 @@
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Speculative Non-Fiction </title>
+  <title> All them poems </title>
 </head>
+<body>
 
-<!--please add some JavaScript to make this pretty-->
+  <div>
+    <input type="button" onclick=document.getElementById('show').style.display='block' value={{title}}>
 
-<h2>
-  {{title}}
-% for paragraph in content:
-<p>{{paragraph}}</p>
-% end
-</h2>
+  % for paragraph in content:
+  <p id="show" style="display:none">{{paragraph}}</p>
+  % end
 
-<a href="/speculative_non_fic.html"> Back </a>
+  </div>
+
 </body>
-
 </html>

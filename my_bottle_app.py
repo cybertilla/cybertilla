@@ -2,11 +2,11 @@
 # You are looking at the boringly infinite waves
 # when something touches your left foot
 # a webpage in a bottle, what is this?!
+
 # Author: Bertilla Fabris, started in the 21st century
 
 from bottle import get, route, abort, run, template, request, redirect, static_file
 import os
-
 
 @route("/")
 @route("/index.html")
@@ -25,6 +25,7 @@ def list_articles():
     """
     return template("bio")
 
+#now let's read some articles from textfiles.
 
 def get_article_from_file(file_name):
         try:
@@ -33,34 +34,20 @@ def get_article_from_file(file_name):
             a = content.split("  ")
             my_file.close()
             return a
-
         except:
             return None
 
 
-def get_poem_from_file(file_name):
-        try:
-            my_file = open(f"storage/poems/{file_name}", "r")
-            content = my_file.read()
-            a = content.split("  ")
-            my_file.close()
-            return a
-
-        except:
-            return None
-
-
-@route ('/articles')
-@route('/articles.html')
+@route('/speculative_non_fic.html')
 def show_all_articles():
     """
     List all articles in storage
     """
-    return template("articles", root="views/")
+    return template("speculative_non_fic", root="views/")
 
 
-@route('articles/<pagename>/')
-@route('articles/<pagename>')
+@route('/articles/<pagename>/')
+@route('/articles/<pagename>')
 def show_article(pagename):
     """
     Displays a single article (loaded from a text file).
@@ -69,7 +56,43 @@ def show_article(pagename):
     if content is None:
         return abort(404, "No such page exists.")
 
-    return template("article", content=content, title=pagename)
+    return template("articles", content=content, title=pagename)
+
+#now we read some poems from textfiles
+
+def get_poem_from_file(file_name):
+        try:
+            my_file = open(f"storage/poems/{file_name}", "r")
+            content = my_file.read()
+            a = content.split("  ")
+            my_file.close()
+            return a
+        except:
+            return None
+
+
+@route('/poetry.html')
+@route('/poetry')
+def list_all_poems():
+    """
+    Display a list with all poems titles and tags
+    """
+    return template('poetry', root="views/")
+
+
+@route('/poems/<pagename>/')
+@route('/poems/<pagename>')
+def show_article(pagename):
+    """
+    Displays a single poem (loaded from a text file).
+    """
+    content = get_poem_from_file(pagename)
+    if content is None:
+        return abort(404, "No such poem exists (yet).")
+
+    return template("poems", content=content, title=pagename)
+
+#
 
 
 @route('/bio-hacks.html')
@@ -79,33 +102,6 @@ def show_biohacks():
     Display static Bio-Hacks redirection page.
     """
     return template('bio-hacks.html', root="views")
-
-
-@route('/poetry.html')
-@route('/poetry')
-def list_all_poems():
-    """
-    Display a list with all poems titles and tags
-    """
-    return template('poetry', root="views")
-
-
-@route('poems/<pagename>/')
-@route('poems/<pagename>')
-def show_article(pagename):
-    """
-    Displays a single poem (loaded from a text file).
-    """
-    content = get_poem_from_file(pagename)
-    if content is None:
-        return abort(404, "No such poem exists (yet).")
-
-    return template("article", content=content, title=pagename)
-
-
-
-
-
 
 
 ####################################

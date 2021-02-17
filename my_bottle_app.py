@@ -4,6 +4,7 @@
 # a webpage in a bottle, what is this?!
 
 # Author: Bertilla Fabris, started in the 21st century
+import markdown
 
 from bottle import get, route, abort, run, template, request, redirect, static_file
 import os
@@ -30,10 +31,9 @@ def list_articles():
 def get_article_from_file(file_name):
         try:
             my_file = open(f"storage/articles/{file_name}", "r")
-            content = my_file.read()
-            a = content.split("  ")
+            html = markdown.markdown(my_file.read())
             my_file.close()
-            return a
+            return html
         except:
             return None
 
@@ -56,7 +56,7 @@ def show_article(pagename):
     if content is None:
         return abort(404, "No such page exists.")
 
-    return template("articles", content=content, title=pagename)
+    return template("articles", content=content)
 
 #now we read some poems from textfiles
 
